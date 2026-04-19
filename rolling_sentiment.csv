@@ -1,0 +1,5 @@
+ticker,date,avg_sentiment,article_count
+AAPL,2026-04-18,0.0761,100
+XOM,2026-04-18,0.0783,100
+TSLA,2026-04-18,0.0177,100
+MSFT,2026-04-18,0.0989,100
