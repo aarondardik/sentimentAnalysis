@@ -29,7 +29,24 @@ tickers = {
     'COST' : 'Costco',
     'NFLX' : 'Netflix',
     'BAC' : 'Bank of America',
-    'CAT' : 'Caterpillar Inc.'
+    'CAT' : 'Caterpillar Inc.',
+    'ABBV' : 'Abbvie',
+    'CVX' : 'Chevron Corporation',
+    'PLTR' : 'Palantir Technologies',
+    'HD' : 'Home Depot',
+    'INTC' : 'Intel',
+    'PG' : 'Procter & Gamble',
+    'CSCO' : 'Cisco',
+    'LRCX' : 'Lam Research',
+    'KO' : 'Coca-Cola Company',
+    'GE' : 'GE Aerospace',
+    'AMAT' : 'Applied Materials',
+    'MS' : 'Morgan Stanley',
+    'UNH' : 'UnitedHealth Group',
+    'MRK' : 'Merck & Co.',
+    'GS' : 'Goldman Sachs',
+    'GEV' : 'GE Vernova',
+    'RTX' : 'RTX Corporation'
 }
 
 # Initialize the sentiment analyzer efficiently
