@@ -12,6 +12,24 @@ tickers = {
     'XOM': 'Exxon',
     'TSLA': 'Tesla',
     'MSFT': 'Microsoft',
+    'NVDA': 'Nvidia',
+    'AMZN': 'Amazon',
+    'GOOGL' : 'Alphabet Inc.',
+    'AVGO' : 'Broadcom',
+    'BRK.B' : 'Berkshire Hathaway',
+    'WMT' : 'Walmart',
+    'JPM' : 'JPMorgan Chase',
+    'LLY' : 'Lilly (Eli)',
+    'V' : 'Visa Inc.',
+    'JNJ' : 'Johnson & Johnson',
+    'MU' : 'Micron Technology',
+    'ORCL' : 'Oracle Corporation',
+    'MA' : 'Mastercard',
+    'AMD' : 'Advanced Micro Devices',
+    'COST' : 'Costco',
+    'NFLX' : 'Netflix',
+    'BAC' : 'Bank of America',
+    'CAT' : 'Caterpillar Inc.'
 }
 
 # Initialize the sentiment analyzer efficiently
