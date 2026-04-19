@@ -1,0 +1,36 @@
+name: Daily Sentiment Scraper
+
+on:
+  schedule:
+    # This runs at 00:00 UTC every day. 
+    # (Note: UTC is 4 hours ahead of NYC, so this is 8:00 PM EST)
+    - cron: '0 0 * * *' 
+  workflow_dispatch: # This adds a "Run now" button on GitHub for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas beautifulsoup4 requests nltk lxml
+
+      - name: Run the scraper
+        run: python webScraper.py
+
+      - name: Save and Push CSV changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "actions@github.com"
+          git add rolling_sentiment.csv
+          # The "|| exit 0" prevents the script from failing if there are no news updates
+          git commit -m "Automated data update [skip ci]" || exit 0
+          git push
