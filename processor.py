@@ -57,5 +57,9 @@ def process_data():
 if __name__ == "main":
     raw_merged_df = process_data()
     final_df = calculate_rolling_averages(raw_merged_df)
-    final_df.to_csv('sentiment_signals.csv', index=False)
-    print("Pipeline complete: Price data merged and rolling averages calculated.")
+    # Only save if we actually have data
+    if not final_df.empty:
+        final_df.to_csv('sentiment_signals.csv', index=False)
+        print(f"Successfully saved {len(final_df)} rows to sentiment_signals.csv")
+    else:
+        print("Final DataFrame was empty. Nothing saved.")
