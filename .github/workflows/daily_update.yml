@@ -1,0 +1,39 @@
+name: Daily Sentiment Update
+
+on:
+  schedule:
+    # This runs at 00:00 UTC every day. 
+    # You can change the time using 'cron' syntax.
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install pandas yfinance numpy
+
+    - name: Run Scraper
+      run: python webScraper.py
+
+    - name: Run Processor
+      run: python processor.py
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add rolling_sentiment.csv sentiment_signals.csv
+        git commit -m "Daily data update: $(date)" || echo "No changes to commit"
+        git push
