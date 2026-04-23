@@ -48,6 +48,7 @@ tickers = {
     'GEV' : 'GE Vernova',
     'RTX' : 'RTX Corporation'
 }
+ticker_list = list(tickers.keys())
 
 # Initialize the sentiment analyzer efficiently
 try:
