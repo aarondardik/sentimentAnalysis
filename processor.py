@@ -1,9 +1,12 @@
 print("PYTHON SCRIPT STARTING...") # Literally the first line
-import pandas as pd
-import yfinance as yf
-import numpy as np
-import os
 import sys
+print("sys imported")
+import os
+print("os imported")
+import pandas as pd
+print("pandas imported")
+import yfinance as yf
+print("yfinance imported - If you don't see this, yfinance is the issue")
 
 def calculate_rolling_averages(df):
     #df = pd.read_csv('rolling_sentiment.csv')
