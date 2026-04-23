@@ -4,11 +4,11 @@ import numpy as np
 
 def calculate_rolling_averages(df):
     #df = pd.read_csv('rolling_sentiment.csv')
-    df['3d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(3).mean())
-    df['10d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(10).mean())
-    df['30d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(30).mean())
-    df['60d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(60).mean())
-    df['90d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(90).mean())
+    df['3d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(3, min_periods=1).mean())
+    df['10d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(10, min_periods=1).mean())
+    df['30d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(30, min_periods=1).mean())
+    df['60d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(60, min_periods=1).mean())
+    df['90d_avg'] = df.groupby('ticker')['avg_sentiment'].transform(lambda x : x.rolling(90, min_periods=1).mean())
 
     return df 
     #tickers = df['ticker'].unique().tolist()
