@@ -1,7 +1,9 @@
+print("PYTHON SCRIPT STARTING...") # Literally the first line
 import pandas as pd
 import yfinance as yf
 import numpy as np
 import os
+import sys
 
 def calculate_rolling_averages(df):
     #df = pd.read_csv('rolling_sentiment.csv')
