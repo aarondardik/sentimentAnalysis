@@ -65,21 +65,29 @@ def process_data():
 
 
 if __name__ == "main":
-    raw_merged_df = process_data()
-    final_df = calculate_rolling_averages(raw_merged_df)
-
-    # 2. THE DEBUG CHECK
-    print("--- PIPELINE DEBUG INFO ---")
-    if final_df is None:
-        print("ERROR: final_df is None!")
-    elif final_df.empty:
-        print("ERROR: final_df is EMPTY. No data to save.")
+    print("--- ENTERING MAIN BLOCK ---")
+    
+    # Check if the file from the Scraper actually exists
+    if os.path.exists('rolling_sentiment.csv'):
+        print("FOUND: rolling_sentiment.csv is present.")
+        # Peek at the file size
+        print(f"File Size: {os.path.getsize('rolling_sentiment.csv')} bytes")
     else:
-        print(f"SUCCESS: final_df has {len(final_df)} rows and {len(final_df.columns)} columns.")
-        print("PREVIEW OF FINAL DATA:")
-        print(final_df.head()) # This prints the first 5 rows to the GitHub log
+        print("MISSING: rolling_sentiment.csv not found!")
 
-
-
+    print("CALLING: process_data()...")
+    raw_merged_df = process_data()
+    
+    print(f"RETURNED: raw_merged_df has {len(raw_merged_df)} rows")
+    
+    print("CALLING: calculate_rolling_averages()...")
+    final_df = calculate_rolling_averages(raw_merged_df)
+    
+    print("SAVING: sentiment_signals.csv...")
     final_df.to_csv('sentiment_signals.csv', index=False)
-    print(f"Successfully saved {len(final_df)} rows to sentiment_signals.csv")
+    print("FINISHED: Process complete.")
+
+
+
+
+    
