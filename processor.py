@@ -62,9 +62,19 @@ def process_data():
 if __name__ == "main":
     raw_merged_df = process_data()
     final_df = calculate_rolling_averages(raw_merged_df)
-    # Only save if we actually have data
-    if not final_df.empty:
-        final_df.to_csv('sentiment_signals.csv', index=False)
-        print(f"Successfully saved {len(final_df)} rows to sentiment_signals.csv")
+
+    # 2. THE DEBUG CHECK
+    print("--- PIPELINE DEBUG INFO ---")
+    if final_df is None:
+        print("ERROR: final_df is None!")
+    elif final_df.empty:
+        print("ERROR: final_df is EMPTY. No data to save.")
     else:
-        print("Final DataFrame was empty. Nothing saved.")
+        print(f"SUCCESS: final_df has {len(final_df)} rows and {len(final_df.columns)} columns.")
+        print("PREVIEW OF FINAL DATA:")
+        print(final_df.head()) # This prints the first 5 rows to the GitHub log
+
+
+
+    final_df.to_csv('sentiment_signals.csv', index=False)
+    print(f"Successfully saved {len(final_df)} rows to sentiment_signals.csv")
