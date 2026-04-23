@@ -22,7 +22,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pandas yfinance numpy
+        pip install pandas yfinance numpy nltk
+        python -m nltk.downloader vader_lexicon punkt
 
     - name: Run Scraper
       run: python webScraper.py
