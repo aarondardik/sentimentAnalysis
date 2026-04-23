@@ -21,12 +21,17 @@ def calculate_rolling_averages(df):
 
 
 def process_data():
+    print("Files currently in the folder:", os.listdir('.'))
+    filename = 'rolling_sentiment.csv'
+
+
     # DEBUG: Check if the file even exists
-    if not os.path.exists('rolling_sentiment.csv'):
-        print("ERROR: rolling_sentiment.csv not found in the current directory!")
+    if not os.path.exists(filename):
+        print(f"CRITICAL ERROR: {filename} does not exist!")
         return pd.DataFrame() # Return empty
 
-    sentiment_df = pd.read_csv('rolling_sentiment.csv', parse_dates=['date'])
+    sentiment_df = pd.read_csv(filename, parse_dates=['date'])
+    print(f"Read {len(sentiment_df)} rows from {filename}")
 
     # DEBUG: See how many rows we loaded
     print(f"Loaded {len(sentiment_df)} rows from rolling_sentiment.csv")
