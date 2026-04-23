@@ -1,6 +1,7 @@
 import pandas as pd
 import yfinance as yf
 import numpy as np
+import os
 
 def calculate_rolling_averages(df):
     #df = pd.read_csv('rolling_sentiment.csv')
@@ -20,7 +21,21 @@ def calculate_rolling_averages(df):
 
 
 def process_data():
+    # DEBUG: Check if the file even exists
+    if not os.path.exists('rolling_sentiment.csv'):
+        print("ERROR: rolling_sentiment.csv not found in the current directory!")
+        return pd.DataFrame() # Return empty
+
     sentiment_df = pd.read_csv('rolling_sentiment.csv', parse_dates=['date'])
+
+    # DEBUG: See how many rows we loaded
+    print(f"Loaded {len(sentiment_df)} rows from rolling_sentiment.csv")
+    
+    if sentiment_df.empty:
+        print("WARNING: sentiment_df is empty!")
+        return sentiment_df
+
+
     tickers = sentiment_df['ticker'].unique().tolist()
     price_data = yf.download(tickers, period="90d", interval="1d")
     
