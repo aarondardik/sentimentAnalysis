@@ -16,7 +16,7 @@ tickers = {
     'AMZN': 'Amazon',
     'GOOGL' : 'Alphabet Inc.',
     'AVGO' : 'Broadcom',
-    'BRK.B' : 'Berkshire Hathaway',
+    'BRK-B' : 'Berkshire Hathaway',
     'WMT' : 'Walmart',
     'JPM' : 'JPMorgan Chase',
     'LLY' : 'Lilly (Eli)',
