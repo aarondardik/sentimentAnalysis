@@ -22,7 +22,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pandas yfinance numpy nltk
+        pip install pandas yfinance numpy nltk beautifulsoup4 requests
         python -m nltk.downloader vader_lexicon punkt
 
     - name: Run Scraper
