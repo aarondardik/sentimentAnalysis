@@ -63,8 +63,7 @@ def process_data():
     #merged_df.to_csv('sentiment_signals.csv', index=False)
     return merged_df
 
-
-if __name__ == "main":
+if __name__ == "__main__":
     print("--- ENTERING MAIN BLOCK ---")
     
     # Check if the file from the Scraper actually exists
